@@ -25,16 +25,17 @@ PRODID:-//xlsx-to-icalendar v1.0//EN
       var eventDate = c[0].date - 2.days # workaround for bug in xl
       eventDate = dateTime(eventDate.year, eventDate.month, eventDate.monthday, 0, 0, 0, 0, local())
       var dateStamp = eventDate.format("YYYYMMdd") & "T" & eventDate.format("HHmmss") & "Z"
-      var dtStart = eventDate.format("YYYYMMdd")
-      var dtEnd = (eventDate + 1.days).format("YYYYMMdd")
-      var descrMaxSize = min(($c[3].value).len() - 1, 15)
-      let summary = $c[2].value &  " (" & $c[3].value[0 .. descrMaxSize] & ")"
+      let dtStart = eventDate.format("YYYYMMdd")
+      let dtEnd = (eventDate + 1.days).format("YYYYMMdd")
+      let summary = $c[2].value
+      let description = $c[3].value
 
       var vevent = fmt"""BEGIN:VEVENT
 DTSTAMP:{dateStamp}
 DTSTART;VALUE=DATE:{dtStart}
 DTEND;VALUE=DATE:{dtEnd}
 SUMMARY:{summary}
+DESCRIPTION:{description}
 UID:{$genUUID()}
 END:VEVENT
 """
