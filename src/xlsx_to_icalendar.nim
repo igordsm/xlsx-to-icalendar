@@ -19,7 +19,6 @@ VERSION:2.0
 PRODID:-//xlsx-to-icalendar v1.0//EN
 """
 
-
   for c in firstSheet.rows():
     try:
       var eventDate = c[0].date - 2.days # workaround for bug in xl
@@ -39,16 +38,13 @@ DESCRIPTION:{description}
 UID:{$genUUID()}
 END:VEVENT
 """
-
       icsText &= vevent
-
-
     except ValueError:
       discard
    
   icsText = icsText.replace("\n", "\r\n")
   icsText &= "END:VCALENDAR"
-
   echo icsText
+
 when isMainModule:
   main()
