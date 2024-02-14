@@ -5,7 +5,7 @@ author        = "Igor Montagner"
 description   = "Create .ics files from Excel spreadsheets"
 license       = "GPL-3.0-or-later"
 srcDir        = "src"
-bin           = @["xlsx_to_icalendar"]
+bin           = @["xlsx_to_icalendar", "tag_to_calendar"]
 
 
 # Dependencies
